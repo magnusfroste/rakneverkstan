@@ -1,0 +1,110 @@
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-600.css";
+@import "@fontsource/inter/latin-800.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  --paper: #faf7f2;
+  --ink: #14181f;
+  --muted: #5b6472;
+  --line: #e7e2d9;
+  --accent: #2563eb;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+  overflow-x: hidden;
+}
+
+/* Större träffytor och ingen dubbeltryck-zoom på iPad */
+button,
+a,
+input,
+textarea,
+select {
+  touch-action: manipulation;
+}
+
+button {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+::selection {
+  background: #dbe7fe;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-[52px] items-center justify-center gap-2 rounded-[16px] px-5 text-[15px]
+      font-semibold transition-transform duration-100 select-none active:scale-[0.98] disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply btn bg-brand text-white shadow-sm hover:bg-brand-dark;
+  }
+  .btn-ghost {
+    @apply btn border border-line bg-white text-ink hover:bg-[#f6f2ea];
+  }
+  .btn-quiet {
+    @apply inline-flex min-h-[52px] items-center gap-1 rounded-[14px] px-2 text-[13px] font-semibold
+      text-muted transition active:scale-[0.98] hover:text-ink;
+  }
+  .card {
+    @apply rounded-[24px] border border-line bg-white shadow-[0_1px_2px_rgba(20,24,31,0.04)];
+  }
+  .pill {
+    @apply inline-flex items-center rounded-full bg-[#f2ede4] px-2.5 py-1 text-[11px] font-semibold
+      uppercase tracking-[0.08em] text-muted;
+  }
+  .key {
+    @apply flex h-[54px] items-center justify-center rounded-[16px] border border-line bg-white
+      text-[22px] font-semibold text-ink transition active:scale-[0.98] active:bg-[#f3efe6] sm:h-[58px];
+  }
+  .key-accent {
+    @apply key border-transparent bg-brand text-white active:bg-brand-dark;
+  }
+}
+
+/* Staplade bråk som skalar med omgivande textstorlek */
+.frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 0.12em;
+  font-size: 0.78em;
+  line-height: 1.08;
+}
+.frac-num {
+  padding: 0 0.18em;
+}
+.frac-den {
+  border-top: 2px solid currentColor;
+  margin-top: 2px;
+  padding: 0 0.18em;
+}
+
+.math {
+  font-variant-numeric: tabular-nums;
+}
+
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
