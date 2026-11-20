@@ -51,7 +51,7 @@ Dockerfilen bygger med Node 22.
 
 ## Teknik
 
-React 19 + TypeScript + Vite + Tailwind. Typsnittet Fredoka ligger i appen (`public/fonts/`); `@fontsource/inter` följer också med i bygget. Inga typsnitt hämtas utifrån.
+React 19 + TypeScript + Vite + Tailwind. Typsnittet Fredoka ligger i appen (`public/fonts/`). Inga typsnitt hämtas utifrån.
 Inga externa anrop, inga kakor, ingen analys.
 
 ```
