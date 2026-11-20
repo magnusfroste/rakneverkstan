@@ -7,6 +7,8 @@ sparas bara lokalt på enheten.
 
 **Spela:** https://rakneverkstan.skolappar.com · En del av [Skolappar](https://www.skolappar.com) – pedagogiska appar av föräldrar · öppen källkod (MIT)
 
+![Räkneverkstan](public/kort.png)
+
 ## Nivåer
 
 | Nivå | Ekvationstyp | Exempel |
