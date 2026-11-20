@@ -5,6 +5,8 @@ omgång, ledtråd och hela lösningen steg för steg. Ingen inloggning, inga kak
 ingen spårning och inga nätverksanrop – allt körs i webbläsaren och statistiken
 sparas bara lokalt på enheten.
 
+**Spela:** https://rakneverkstan.skolappar.com · En del av [Skolappar](https://www.skolappar.com) – pedagogiska appar av föräldrar · öppen källkod (MIT)
+
 ## Nivåer
 
 | Nivå | Ekvationstyp | Exempel |
@@ -45,10 +47,12 @@ Kontrollera uppgiftsgeneratorn (2400 uppgifter, alla svar och steg räknas om):
 npm run test:generator
 ```
 
+Dockerfilen bygger med Node 22.
+
 ## Teknik
 
-React 19 + TypeScript + Vite + Tailwind. Typsnittet Inter ligger i paketet
-(`@fontsource/inter`). Inga externa anrop, inga kakor, ingen analys.
+React 19 + TypeScript + Vite + Tailwind. Typsnittet Fredoka ligger i appen (`public/fonts/`); `@fontsource/inter` följer också med i bygget. Inga typsnitt hämtas utifrån.
+Inga externa anrop, inga kakor, ingen analys.
 
 ```
 src/App.tsx                 vyer: nivåval, omgång, resultat
@@ -60,6 +64,15 @@ src/lib/stats.ts            statistik i localStorage
 scripts/check-equations.ts  egenkontroll av generatorn
 ```
 
-## Publicering
+## Docker
 
-`Dockerfile` bygger appen och serverar `dist/` med nginx på port 8080.
+```bash
+docker build -t rakneverkstan .
+docker run --rm -p 8080:8080 rakneverkstan
+```
+
+`Dockerfile` bygger appen och serverar `dist/` med nginx på port 8080 (`deploy/nginx.conf`).
+
+## Licens
+
+MIT – se [LICENSE](LICENSE).
