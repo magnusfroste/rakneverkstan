@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Keypad from "./Keypad";
 import MathLine from "./MathLine";
 import { checkAnswer, LEVEL_META, type Task } from "../lib/equations";
+import { report } from "../lib/skolappar";
 
 type Phase = "input" | "correct" | "wrong";
 
@@ -69,6 +70,7 @@ export default function Practice({
       }, 1500);
     } else {
       setPhase("wrong");
+      report("hint");
     }
   };
 
@@ -226,7 +228,10 @@ export default function Practice({
       <div className="mt-2.5 flex gap-2">
         {phase === "input" && (
           <>
-            <button type="button" className="btn-ghost flex-1" onClick={() => setHintOpen((v) => !v)}>
+            <button type="button" className="btn-ghost flex-1" onClick={() => {
+                if (!hintOpen) report("hint");
+                setHintOpen((v) => !v);
+              }}>
               {hintOpen ? "Göm ledtråd" : "Ledtråd"}
             </button>
             <button type="button" className="btn-primary flex-[1.4]" onClick={submit} disabled={!input.trim()}>
