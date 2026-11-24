@@ -3,6 +3,7 @@ import MathLine from "./components/MathLine";
 import Practice from "./components/Practice";
 import { LEVELS, LEVEL_META, generateTask, type Level, type Task } from "./lib/equations";
 import { accuracy, loadStats, recordAnswer, saveStats, type Stats } from "./lib/stats";
+import { report } from "./lib/skolappar";
 
 const ROUND_SIZE = 10;
 
@@ -156,6 +157,13 @@ export default function App() {
     saveStats(stats);
   }, [stats]);
 
+  // Reported here and not in handleNext: a correct last answer moves on from a timer whose
+  // handler still sees the entries from before that answer.
+  useEffect(() => {
+    if (screen !== "result" || tasks.length === 0) return;
+    report("round_done", Math.round((entries.filter((e) => e?.correct).length / tasks.length) * 100));
+  }, [screen]);
+
   const start = (next: Mode) => {
     setMode(next);
     setTasks(buildRound(next));
@@ -165,6 +173,8 @@ export default function App() {
     setBestInRound(0);
     setScreen("play");
     window.scrollTo({ top: 0 });
+    report("round_start");
+    if (next !== "mix") report("level", next);
   };
 
   const handleAttempt = (correct: boolean) => {
