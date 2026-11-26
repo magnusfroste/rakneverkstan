@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rakneverkstan.skolappar.com/sitemap.xml
+Sitemap: https://rakneverkstan.skolappar.org/sitemap.xml

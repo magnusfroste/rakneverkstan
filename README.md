@@ -5,7 +5,7 @@ omgång, ledtråd och hela lösningen steg för steg. Ingen inloggning, inga kak
 ingen spårning och inga nätverksanrop – allt körs i webbläsaren och statistiken
 sparas bara lokalt på enheten.
 
-**Spela:** https://rakneverkstan.skolappar.com · En del av [Skolappar](https://www.skolappar.com) – pedagogiska appar av föräldrar · öppen källkod (MIT)
+**Spela:** https://rakneverkstan.skolappar.org · En del av [Skolappar](https://www.skolappar.org) – pedagogiska appar av föräldrar · öppen källkod (MIT)
 
 ![Räkneverkstan](public/kort.png)
 
